@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Farsharp — Graphic Designer & Brand Identity Specialist</title>
+<meta name="description" content="Portfolio of Farsharp — graphic designer specializing in visual identity, branding, and motion graphics." />
+
+<!-- Fonts: Arabic (calligraphic + readable) + English (serif editorial + handwritten) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Markazi+Text:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Caveat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     TOPOGRAPHIC BACKGROUND
+     Flowing contour-style lines, like a hand-drawn map.
+     Sits as a fixed ambient layer behind every section.
+     ============================================================ -->
+<svg class="bg-topo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top flowing lines — gentle ridge -->
+    <path d="M-60 50 C 180 10, 380 90, 580 40 S 980 30, 1180 70 S 1480 100, 1660 50"/>
+    <path d="M-60 95 C 200 60, 400 140, 600 90 S 1000 80, 1200 115 S 1500 140, 1660 95"/>
+    <path d="M-60 145 C 220 110, 420 195, 620 140 S 1020 130, 1220 160 S 1520 190, 1660 150"/>
+    <path d="M-60 200 C 240 165, 440 240, 640 190 S 1060 175, 1260 210 S 1560 240, 1660 210"/>
+    <path d="M-60 270 C 250 230, 450 305, 650 260 S 1080 245, 1280 280 S 1580 305, 1660 270"/>
+
+    <!-- Left island cluster — concentric rings -->
+    <path d="M250 410 C 200 380, 200 340, 280 320 S 380 340, 390 400 S 350 460, 290 460 S 250 440, 250 410 Z"/>
+    <path d="M270 415 C 230 390, 230 360, 290 340 S 360 360, 370 400 S 340 445, 295 445 S 270 430, 270 415 Z"/>
+    <path d="M285 420 C 250 400, 255 375, 300 360 S 350 380, 355 405 S 330 430, 300 430 S 285 425, 285 420 Z"/>
+    <path d="M295 420 C 275 410, 280 395, 305 385 S 340 395, 340 410 S 320 425, 305 425 S 295 422, 295 420 Z"/>
+
+    <!-- Mid flow — winding river-like lines -->
+    <path d="M-60 380 C 180 350, 360 420, 560 385 S 720 340, 800 360 C 900 380, 980 440, 1100 420 S 1400 410, 1660 440"/>
+    <path d="M-60 440 C 200 410, 380 480, 580 445 S 720 400, 820 425 C 920 445, 1000 500, 1100 480 S 1400 470, 1660 500"/>
+    <path d="M-60 510 C 220 480, 400 545, 600 510 S 740 470, 850 490 C 940 510, 1020 555, 1100 540 S 1400 530, 1660 555"/>
+
+    <!-- Right island cluster -->
+    <path d="M1200 360 C 1140 340, 1130 290, 1200 270 S 1330 290, 1350 350 S 1320 420, 1240 425 S 1200 390, 1200 360 Z"/>
+    <path d="M1215 365 C 1170 350, 1165 305, 1215 290 S 1320 305, 1340 350 S 1310 410, 1245 415 S 1215 385, 1215 365 Z"/>
+    <path d="M1230 365 C 1200 355, 1200 320, 1235 310 S 1310 325, 1320 355 S 1300 400, 1255 400 S 1230 380, 1230 365 Z"/>
+
+    <!-- Bottom flowing lines — broader valleys -->
+    <path d="M-60 600 C 220 565, 420 645, 620 600 S 1020 590, 1220 625 S 1520 660, 1660 615"/>
+    <path d="M-60 670 C 240 635, 440 715, 640 670 S 1040 660, 1240 695 S 1540 725, 1660 685"/>
+    <path d="M-60 750 C 260 715, 460 790, 660 745 S 1060 735, 1260 770 S 1580 795, 1660 760"/>
+    <path d="M-60 830 C 280 795, 480 870, 680 830 S 1080 815, 1280 855 S 1580 880, 1660 850"/>
+
+    <!-- Small accent islands -->
+    <path d="M780 700 Q 750 690, 760 670 T 820 660 T 850 700 T 810 720 Q 780 720, 780 700 Z"/>
+    <path d="M790 695 Q 770 690, 778 678 T 815 672 T 838 695 T 808 712 Q 790 710, 790 695 Z"/>
+
+    <path d="M1100 180 Q 1075 175, 1080 160 T 1130 152 T 1158 178 T 1130 200 Q 1105 200, 1100 180 Z"/>
+    <path d="M1110 182 Q 1090 178, 1095 167 T 1130 162 T 1150 180 T 1128 195 Q 1112 194, 1110 182 Z"/>
+  </g>
+</svg>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="logo">Farsharp <span class="ar-mark">فــارس</span></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#agency">Agency</a></li>
+      <li><a href="#system">System</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="https://wa.me/201202490921" target="_blank" rel="noopener" class="nav-cta">WhatsApp →</a>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO — collage centerpiece
+     Big calligraphic Arabic word, English byline, scattered
+     polaroids + stamps + handwritten note on the right.
+     ============================================================ -->
+<header class="hero">
+  <div class="ink-blot blot-1"></div>
+  <div class="ink-blot blot-2"></div>
+  <div class="container hero-grid">
+
+    <!-- Left: typography centerpiece -->
+    <div class="hero-left reveal">
+      <div class="hero-eyebrow-row">
+        <span class="eyebrow">Graphic Designer · Cairo</span>
+      </div>
+      <p class="hero-arabic-line ar">كل علامة لها صوت · أصممه بصرياً</p>
+      <div class="hero-display-word ar-calli">فــارس</div>
+      <h1 class="hero-h1">
+        Brand identity <em>that leaves</em> a lasting mark.
+      </h1>
+      <p class="hero-desc">
+        I'm Farsharp — a graphic designer specializing in visual identity, branding, and motion graphics. I build brand systems with a deep root in Arabic typography and a modern editorial eye.
+      </p>
+      <div class="hero-cta-row">
+        <a href="#work" class="btn-ink">View Selected Work →</a>
+        <a href="#contact" class="btn-ghost">Start a Project</a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">6+ <span class="stat-num-ar">٦</span></div>
+          <div class="stat-label">Brand Identities</div>
+        </div>
+        <div>
+          <div class="stat-num">1+ <span class="stat-num-ar">١</span></div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div>
+          <div class="stat-num">25+ <span class="stat-num-ar">٢٥</span></div>
+          <div class="stat-label">Pages of System</div>
+        </div>
+        <div>
+          <div class="stat-num">1 <span class="stat-num-ar">١</span></div>
+          <div class="stat-label">Studio Founded</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: scattered collage — pressed botanicals, polaroids, stamps, vinyl -->
+    <div class="hero-right reveal">
+
+      <!-- Pressed fern branch — top-left corner -->
+      <div class="hero-collage-item collage-fern" aria-hidden="true">
+        <svg class="botanical-svg" viewBox="0 0 80 220" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40 215 Q 38 110, 42 8" stroke="#6B7A3D" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <g fill="#6B7A3D" opacity="0.78">
+            <ellipse cx="25" cy="200" rx="13" ry="3" transform="rotate(-30 25 200)"/>
+            <ellipse cx="55" cy="190" rx="13" ry="3" transform="rotate(30 55 190)"/>
+            <ellipse cx="22" cy="170" rx="15" ry="3.5" transform="rotate(-32 22 170)"/>
+            <ellipse cx="58" cy="158" rx="15" ry="3.5" transform="rotate(32 58 158)"/>
+            <ellipse cx="20" cy="138" rx="17" ry="4" transform="rotate(-35 20 138)"/>
+            <ellipse cx="60" cy="125" rx="17" ry="4" transform="rotate(35 60 125)"/>
+            <ellipse cx="22" cy="105" rx="15" ry="3.5" transform="rotate(-35 22 105)"/>
+            <ellipse cx="58" cy="92" rx="15" ry="3.5" transform="rotate(35 58 92)"/>
+            <ellipse cx="25" cy="72" rx="13" ry="3" transform="rotate(-32 25 72)"/>
+            <ellipse cx="55" cy="60" rx="13" ry="3" transform="rotate(32 55 60)"/>
+            <ellipse cx="29" cy="42" rx="10" ry="2.5" transform="rotate(-28 29 42)"/>
+            <ellipse cx="51" cy="32" rx="10" ry="2.5" transform="rotate(28 51 32)"/>
+            <ellipse cx="35" cy="20" rx="6" ry="2" transform="rotate(-15 35 20)"/>
+            <ellipse cx="45" cy="14" rx="6" ry="2" transform="rotate(15 45 14)"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Polaroid 1 -->
+      <div class="hero-collage-item collage-photo-1">
+        <div class="hero-polaroid">
+          <div class="photo" id="heroPhoto1"></div>
+          <div class="caption">CR A BRA · ٢٠٢٥</div>
+        </div>
+      </div>
+
+      <!-- Vintage Egypt postage stamp — multi-line, decorative border -->
+      <div class="hero-collage-item collage-stamp">
+        <div class="stamp stamp-vintage">
+          <div class="stamp-top">EGYPT POSTAGE</div>
+          <div class="stamp-emblem" aria-hidden="true">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+              <g fill="#9B2A21">
+                <circle cx="15" cy="15" r="6" fill="none" stroke="#9B2A21" stroke-width="0.8"/>
+                <path d="M15 5 L 17 13 L 25 13 L 18.5 17.5 L 21 25 L 15 20 L 9 25 L 11.5 17.5 L 5 13 L 13 13 Z"/>
+              </g>
+            </svg>
+          </div>
+          <div class="stamp-mid ar">صُنــع بحــب</div>
+          <div class="stamp-bot">
+            <span>1950</span>
+            <span class="dot">●</span>
+            <span>20 MILS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vinyl record — small black disc with red label -->
+      <div class="hero-collage-item collage-vinyl" aria-hidden="true">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="#1E1A15"/>
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#3A332B" stroke-width="0.4"/>
+          <circle cx="50" cy="50" r="42" fill="none" stroke="#3A332B" stroke-width="0.4"/>
+          <circle cx="50" cy="50" r="38" fill="none" stroke="#3A332B" stroke-width="0.4"/>
+          <circle cx="50" cy="50" r="34" fill="none" stroke="#3A332B" stroke-width="0.4"/>
+          <circle cx="50" cy="50" r="30" fill="none" stroke="#3A332B" stroke-width="0.4"/>
+          <circle cx="50" cy="50" r="26" fill="none" stroke="#3A332B" stroke-width="0.4"/>
+          <circle cx="50" cy="50" r="22" fill="#9B2A21"/>
+          <circle cx="50" cy="50" r="22" fill="none" stroke="#7A1F18" stroke-width="0.5"/>
+          <circle cx="50" cy="50" r="2" fill="#1E1A15"/>
+        </svg>
+      </div>
+
+      <!-- Crossword puzzle grid — Arabic-style 5×5 -->
+      <div class="hero-collage-item collage-crossword" aria-hidden="true">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="#3A332B" stroke-width="0.5">
+            <rect x="0"  y="0"  width="20" height="20" fill="#FBF5E8"/>
+            <rect x="20" y="0"  width="20" height="20" fill="#1E1A15"/>
+            <rect x="40" y="0"  width="20" height="20" fill="#FBF5E8"/>
+            <rect x="60" y="0"  width="20" height="20" fill="#FBF5E8"/>
+            <rect x="80" y="0"  width="20" height="20" fill="#1E1A15"/>
+            <rect x="0"  y="20" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="20" y="20" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="40" y="20" width="20" height="20" fill="#1E1A15"/>
+            <rect x="60" y="20" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="80" y="20" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="0"  y="40" width="20" height="20" fill="#1E1A15"/>
+            <rect x="20" y="40" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="40" y="40" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="60" y="40" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="80" y="40" width="20" height="20" fill="#1E1A15"/>
+            <rect x="0"  y="60" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="20" y="60" width="20" height="20" fill="#1E1A15"/>
+            <rect x="40" y="60" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="60" y="60" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="80" y="60" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="0"  y="80" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="20" y="80" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="40" y="80" width="20" height="20" fill="#FBF5E8"/>
+            <rect x="60" y="80" width="20" height="20" fill="#1E1A15"/>
+            <rect x="80" y="80" width="20" height="20" fill="#FBF5E8"/>
+          </g>
+          <g font-family="serif" font-size="5" fill="#3A332B">
+            <text x="2" y="7">١</text>
+            <text x="42" y="7">٢</text>
+            <text x="22" y="27">٣</text>
+            <text x="22" y="47">٤</text>
+            <text x="62" y="67">٥</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Polaroid 2 -->
+      <div class="hero-collage-item collage-photo-2">
+        <div class="hero-polaroid">
+          <div class="photo" id="heroPhoto2"></div>
+          <div class="caption">TAJDEED · تجديد</div>
+        </div>
+      </div>
+
+      <!-- Handwritten torn-paper note -->
+      <div class="hero-collage-item collage-note">
+        <span class="ar">يا أهلاً</span><br>
+        Hi, I'm Farsharp.<br>
+        <span style="font-size:18px;color:var(--ink-mute);">– est. 2025 –</span>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ============================================================
+     WORK — two polaroids (Brand Identities + Posters/Social)
+     ============================================================ -->
+<section id="work">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Selected Work</span>
+      <span class="section-title-ar">المشـــــاريع</span>
+      <h2 class="section-title">Brands that <em>leave a mark</em>.</h2>
+      <p class="section-desc">
+        A small, edited selection. Each polaroid opens the full visual system inside.
+      </p>
+    </div>
+
+    <div class="work-grid reveal">
+      <!-- Brand Identities -->
+      <div class="mini-card" id="openBrandsModal" data-cover="../athr agency/cr a bra _Brand Guidelines 01.png">
+        <div class="cover"></div>
+        <div class="mini-content">
+          <div class="mini-label">Brand Identities</div>
+          <h3 class="mini-name">Full visual systems</h3>
+          <p class="mini-sub">CR A BRA · TAJDEED</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BRANDS MODAL (opens from "Brand Identities" card)
+     ============================================================ -->
+<div class="brands-modal" id="brandsModal">
+  <div class="brands-modal-inner">
+    <div class="brands-modal-header">
+      <div>
+        <span class="eyebrow">Brand Identities</span>
+        <h2 class="brands-modal-title">Two brand <em>systems</em>.</h2>
+      </div>
+      <button class="brands-modal-close" onclick="closeBrandsModal()" aria-label="Close">✕</button>
+    </div>
+
+    <div class="brands-grid">
+      <!-- CR A BRA -->
+      <div class="brand-card featured" data-project="crabra" data-cover="../athr agency/cr a bra _Brand Guidelines 01.png">
+        <div class="cover"></div>
+        <div class="content">
+          <div class="meta">
+            <span class="meta-tag">Brand Guidelines</span>
+            <span class="meta-count">25 PAGES</span>
+          </div>
+          <h3 class="brand-name">CR A BRA</h3>
+          <p class="brand-sub">Complete brand identity system</p>
+          <p class="brand-desc">A creative studio crafting brand identities and visual systems — strategy meets craft to leave a lasting mark.</p>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+
+      <!-- TAJDEED -->
+      <div class="brand-card" data-project="tajdeed" data-cover="../تج/تج-01.jpg">
+        <div class="cover"></div>
+        <div class="content">
+          <div class="meta">
+            <span class="meta-tag">Visual Identity</span>
+            <span class="meta-count">6 PAGES</span>
+          </div>
+          <h3 class="brand-name">TAJDEED · تجديد</h3>
+          <p class="brand-sub">Solar Energy</p>
+          <p class="brand-desc">A solar panel company bringing clean, renewable power — sustainable solar solutions to cut electricity bills.</p>
+        </div>
+        <div class="arrow">↗</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ABOUT — portrait polaroid + intro text (with lang toggle)
+     ============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">About</span>
+      <span class="section-title-ar">عــن فــارس</span>
+      <h2 class="section-title">Design with <em>intent</em>.</h2>
+    </div>
+
+    <div class="about-grid reveal">
+      <!-- Portrait polaroid -->
+      <div class="portrait-polaroid">
+        <div class="portrait"></div>
+        <div class="portrait-caption">
+          Farsharp
+          <span class="small">Tanta · ٢٠٢٥</span>
+        </div>
+      </div>
+
+      <!-- Text block with language toggle -->
+      <div class="about-text" id="aboutText">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+          <span class="lang-toggle-icon">🌐</span>
+          <span class="lang-toggle-label">العربية</span>
+        </button>
+
+        <div class="lang-en" data-lang="en">
+          <p>
+            I'm <strong>Farsharp</strong> — a graphic designer specializing in <strong>visual identity</strong>, <strong>branding</strong>, and <strong>motion graphics</strong>. I believe great design is more than aesthetics — it's a visual language that says who you are.
+          </p>
+          <p>
+            My work focuses on cohesive brand systems that help businesses stand out. From logo and guidelines to social content and motion, I approach every project with a strategic mindset and a love for typography — Arabic and Latin alike.
+          </p>
+          <p>
+            I'm also the <strong>Founder of Athr Agency</strong>, an independent creative studio in Egypt — where we help brands leave a lasting mark.
+          </p>
+        </div>
+
+        <div class="lang-ar" data-lang="ar" dir="rtl" style="display:none;">
+          <p>
+            أنا <strong>فارس شارب</strong> — مصمم جرافيك متخصص في <strong>الهوية البصرية</strong> و<strong>البراندينج</strong> و<strong>الموشن جرافيك</strong>. مؤمن إن التصميم لغة بصرية، بتعبّر عن مين أنت وإيه اللي بتمثله.
+          </p>
+          <p>
+            شغلي بيركّز على سيستمز هوية متكاملة تساعد البيزنس يطلع قدّام ويوصل لجمهوره. من تصميم اللوجو والجايدلاينز للسوشيال والموشن، بتعامل مع كل مشروع بذهنية استراتيجية وحب حقيقي للحروف — عربي ولاتيني.
+          </p>
+          <p>
+            أنا كمان <strong>مؤسّس Athr Agency</strong>، استوديو إبداعي مستقل في مصر — بنساعد فيه البراندات تسيب أثر حقيقي.
+          </p>
+        </div>
+
+        <div class="about-meta">
+          <div class="meta-row">
+            <span class="meta-label">Based in</span>
+            <span class="meta-value">Tanta, Egypt</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Designer · Founder</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Focus</span>
+            <span class="meta-value">Brand Identity · Motion</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">Availability</span>
+            <span class="meta-value accent">Open to work</span>
+          </div>
+        </div>
+
+        <!-- Skills bars -->
+        <div class="skills-block">
+          <div class="skills-title">
+            <span>Skills</span>
+            <span class="skills-title-ar">المهــارات</span>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <span class="skill-name">Brand Identity <em>· الهوية البصرية</em></span>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 90%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <span class="skill-name">UX / UI Design <em>· واجهات</em></span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 80%;"></div></div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-label">
+              <span class="skill-name">2D Motion <em>· موشن جرافيك</em></span>
+              <span class="skill-percent">75%</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" style="width: 75%;"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CHAPTER BREAK → AGENCY (Athr) is a separate venture
+     ============================================================ -->
+<div class="chapter-break" aria-hidden="true">
+  <div class="container">
+    <div class="chapter-break-inner">
+      <span class="chapter-line"></span>
+      <span class="chapter-label">فصــل آخـــر</span>
+      <span class="chapter-line"></span>
+    </div>
+    <div class="chapter-sub">A separate venture</div>
+  </div>
+</div>
+
+<!-- ============================================================
+     ATHR AGENCY — its own chapter, its own visual treatment
+     ============================================================ -->
+<section id="agency" class="agency-section">
+  <div class="container agency-inner">
+    <div class="agency-header reveal">
+      <div class="agency-meta-row">
+        <span class="agency-meta-piece"><span class="dot"></span> Independent Studio</span>
+        <span class="agency-meta-sep">·</span>
+        <span class="agency-meta-piece">Cairo, Egypt</span>
+        <span class="agency-meta-sep">·</span>
+        <span class="agency-meta-piece">Est. 2025</span>
+      </div>
+      <div class="agency-arabic-mark" aria-hidden="true">أثــر</div>
+      <h2 class="agency-name">Athr <span class="agency-name-accent">Agency</span></h2>
+      <p class="agency-tagline">
+        A full-service creative studio — branding, development, and content under one roof.<br>
+        <span class="ar">أثر</span> · the mark we leave behind.
+      </p>
+      <div class="agency-founder-line">
+        <span class="agency-founder-pill">◆ Founded by Farsharp</span>
+        <span class="agency-founder-note">A separate brand I built — distinct from my freelance work above.</span>
+      </div>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service">
+        <div class="service-icon">◆</div>
+        <h4>Brand Identity</h4>
+        <p>Logo, guidelines, and complete visual systems.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">◉</div>
+        <h4>Web Development</h4>
+        <p>Custom websites and digital experiences.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">◎</div>
+        <h4>Social Media</h4>
+        <p>Page management and content production.</p>
+      </div>
+      <div class="service">
+        <div class="service-icon">▶</div>
+        <h4>Video Editing</h4>
+        <p>Motion graphics and professional montage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="chapter-break chapter-break-end" aria-hidden="true">
+  <div class="container">
+    <div class="chapter-break-inner">
+      <span class="chapter-line"></span>
+      <span class="chapter-label">نرجــع للشخصــي</span>
+      <span class="chapter-line"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SYSTEM — Brand Identity package (product offering)
+     ============================================================ -->
+<section id="system" class="system-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="eyebrow">Brand Identity System</span>
+      <span class="section-title-ar">سيستــم الهويـــة</span>
+      <h2 class="section-title">Build your <em>brand</em> — with my system.</h2>
+    </div>
+
+    <div class="system-caption reveal" dir="rtl">
+      <span class="greeting">أهلاً بيك يا فنان 💙</span>
+      <p>الخطوة دي هي اللي هتنقل براندينج شغلك لمستوى احترافي وتوفر عليك مجهود سنين.</p>
+      <p>النظام ده <strong>"سيستم متكامل"</strong> لعمل الهوية البصرية، متاح بنسختين حسب احتياجك دلوقتي:</p>
+    </div>
+
+    <div class="system-grid reveal">
+      <!-- PDF Reference -->
+      <div class="system-card">
+        <div class="system-card-top">
+          <div class="system-emoji">🌀</div>
+          <div class="system-variant">النسخة الـ Reference</div>
+          <div class="system-format">PDF</div>
+        </div>
+        <ul class="system-features">
+          <li>مرجع استراتيجي شامل لكل تفاصيل بناء الهوية.</li>
+          <li>مثالية لو عايز تفهم "الهيكلة العالمية" بتمشي إزاي.</li>
+          <li>هتعلمك تبني Framework قوي ومقنع لأي عميل.</li>
+        </ul>
+        <div class="system-price-row">
+          <span class="price-old">٥٠٠ج</span>
+          <div class="price-new">٤١٠<span class="currency">ج</span></div>
+          <span class="price-badge">عرض خاص</span>
+        </div>
+        <a href="https://wa.me/201202490921?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D9%86%D8%B3%D8%AE%D8%A9%20PDF%20%D9%85%D9%86%20%D8%B3%D9%8A%D8%B3%D8%AA%D9%85%20%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9" target="_blank" rel="noopener" class="system-btn">
+          <span class="wa-icon">💬</span> اطلب PDF على واتساب
+        </a>
+      </div>
+
+      <!-- Pro -->
+      <div class="system-card featured">
+        <div class="best-value">أفضل قيمة مقابل سعر</div>
+        <div class="system-card-top">
+          <div class="system-emoji">🌀</div>
+          <div class="system-variant">النسخة الـ Pro</div>
+          <div class="system-format">Illustrator + PDF</div>
+        </div>
+        <ul class="system-features">
+          <li>بتاخد الملفات "المفتوحة" اللي أنا شغال بيها شخصياً.</li>
+          <li>جاهزة للتعديل المباشر (ألوان، خطوط، لوجو).</li>
+          <li>بتختصر 70% من وقت التصميم والتنفيذ.</li>
+          <li>تقدر تسلم بيها شغلك للعملاء فوراً وباحترافية.</li>
+        </ul>
+        <div class="system-price-row">
+          <span class="price-old">٣١٠٠ج</span>
+          <div class="price-new">٢٠٠٠<span class="currency">ج</span></div>
+          <span class="price-badge">وفّر ١١٠٠ج</span>
+        </div>
+        <a href="https://wa.me/201202490921?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D9%86%D8%B3%D8%AE%D8%A9%20Pro%20%D9%85%D9%86%20%D8%B3%D9%8A%D8%B3%D8%AA%D9%85%20%D8%A7%D9%84%D9%87%D9%88%D9%8A%D8%A9" target="_blank" rel="noopener" class="system-btn primary">
+          <span class="wa-icon">💬</span> اطلب Pro على واتساب
+        </a>
+      </div>
+    </div>
+
+    <div class="system-note reveal" dir="rtl">
+      <p><span class="lamp">💡</span> <strong>نصيحتي ليك:</strong> لو لسه بتبني خبرتك الـ PDF ممتاز ليك. لكن لو عندك ضغط شغل وعملاء، الـ Pro هو الاستثمار اللي هيرجع ثمنه من أول بروجكت.</p>
+      <p class="system-cta-line">حابب تبدأ بـ PDF ولا تنجز وقتك بنسخة الـ Pro؟</p>
+      <p>لو عايز تشوف بريف على الهوية، <a href="#work" class="brief-link">بص المشاريع</a> وخش على مشروع <strong>أثر / CR A BRA</strong>.</p>
+      <p class="system-closing">رد عليا على واتساب عشان أبعتلك تفاصيل التحويل فوراً.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="container reveal">
+    <span class="contact-arabic ar-calli">يـلا نشتـغل</span>
+    <h2 class="contact-title">Let's build something <em>that leaves</em> a mark.</h2>
+    <p class="contact-desc">
+      Got a brand to launch or a visual problem to solve? I'd love to hear about it.
+    </p>
+
+    <a href="https://wa.me/201202490921" target="_blank" rel="noopener" class="whatsapp-cta">
+      <span class="wa-icon">💬</span>
+      <span>
+        <span class="wa-label">WhatsApp</span>
+        <span class="wa-number">+20 120 249 0921</span>
+      </span>
+      <span class="wa-arrow">↗</span>
+    </a>
+
+    <div class="social-row">
+      <a href="mailto:Farsharp@gmail.com" class="social-link">
+        <span>@</span> Farsharp@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/fars-harp-86291723b/?locale=en" target="_blank" rel="noopener" class="social-link">
+        <span>in</span> LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <div class="logo">Farsharp <span class="ar-mark">فــارس</span></div>
+    </div>
+    <div class="footer-meta">
+      © 2026 Farsharp <span class="sep">·</span> Founder of Athr Agency <span class="sep">·</span> Crafted with care
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     STACK MODAL — tilted card viewer (driven by script.js)
+     ============================================================ -->
+<div class="stack-modal" id="stackModal">
+  <div class="stack-modal-inner">
+    <div class="stack-header">
+      <h3 class="stack-title" id="stackTitle">Project</h3>
+      <button class="stack-close" onclick="closeStack()" aria-label="Close">✕</button>
+    </div>
+    <div class="stack-area" id="stackArea" onclick="nextCard()"></div>
+    <div class="stack-hint">Click to see next</div>
+    <div class="stack-counter">
+      <span class="cur" id="stackCur">01</span>
+      <span id="stackTotal">/ 08</span>
+    </div>
+  </div>
+</div>
+
+<script src="content-loader.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

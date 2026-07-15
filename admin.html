@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Farsharp · Admin Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<!-- ====== LOGIN SCREEN ====== -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-logo">Farsharp <span class="ar">فــارس</span></div>
+    <div class="login-sub">لوحة التحكم · Admin Panel</div>
+    <form id="loginForm" autocomplete="off">
+      <label>كلمة السر</label>
+      <input type="password" id="passwordInput" placeholder="••••••••" required>
+      <button type="submit">دخول</button>
+      <p class="login-error" id="loginError"></p>
+    </form>
+  </div>
+</div>
+
+<!-- ====== ADMIN APP ====== -->
+<div id="adminApp" class="admin-app" style="display:none;">
+
+  <!-- HEADER -->
+  <header class="admin-header">
+    <div class="admin-header-left">
+      <h1>Farsharp <span class="ar">فــارس</span> · Admin</h1>
+      <span class="admin-status" id="adminStatus">جاهز</span>
+    </div>
+    <div class="admin-header-actions">
+      <button class="btn-secondary" id="btnPreview" title="افتح الموقع في تاب جديد">معاينة ↗</button>
+      <button class="btn-secondary" id="btnImport">استيراد JSON</button>
+      <button class="btn-primary" id="btnExport">تنزيل content.json</button>
+      <button class="btn-ghost" id="btnLogout">خروج</button>
+    </div>
+  </header>
+
+  <!-- TABS -->
+  <nav class="admin-tabs">
+    <button class="tab active" data-tab="hero">الـ Hero</button>
+    <button class="tab" data-tab="work">Work</button>
+    <button class="tab" data-tab="brands">Brands</button>
+    <button class="tab" data-tab="projects">Projects (الصور)</button>
+    <button class="tab" data-tab="about">About</button>
+    <button class="tab" data-tab="agency">Athr Agency</button>
+    <button class="tab" data-tab="system">System Packages</button>
+    <button class="tab" data-tab="contact">Contact</button>
+    <button class="tab" data-tab="nav">Nav & Footer</button>
+  </nav>
+
+  <main class="admin-main">
+
+    <!-- ===== HERO TAB ===== -->
+    <section class="tab-panel active" data-tab="hero">
+      <h2>قسم الـ Hero (أول الصفحة)</h2>
+      <div class="field-grid">
+        <div class="field"><label>Eyebrow (سطر فوق العنوان)</label><input data-bind="hero.eyebrow" type="text"></div>
+        <div class="field"><label>السطر العربي</label><input data-bind="hero.arabicLine" type="text"></div>
+        <div class="field"><label>الكلمة العربية الكبيرة</label><input data-bind="hero.displayWord" type="text"></div>
+        <div class="field full"><label>العنوان الرئيسي (HTML مسموح)</label><textarea data-bind="hero.headline" rows="2"></textarea></div>
+        <div class="field full"><label>الوصف</label><textarea data-bind="hero.description" rows="4"></textarea></div>
+        <div class="field"><label>نص زرار View Work</label><input data-bind="hero.ctaPrimary.label" type="text"></div>
+        <div class="field"><label>رابط زرار View Work</label><input data-bind="hero.ctaPrimary.href" type="text"></div>
+        <div class="field"><label>نص زرار Start Project</label><input data-bind="hero.ctaSecondary.label" type="text"></div>
+        <div class="field"><label>رابط زرار Start Project</label><input data-bind="hero.ctaSecondary.href" type="text"></div>
+      </div>
+
+      <h3>الـ Stats (الأرقام)</h3>
+      <div class="repeater" id="heroStatsRepeater" data-bind="hero.stats" data-fields='[
+        {"key":"num","label":"الرقم EN","type":"text"},
+        {"key":"numAr","label":"الرقم AR","type":"text"},
+        {"key":"label","label":"الـ Label","type":"text"}
+      ]'></div>
+
+      <h3>الـ Stamp (الختم)</h3>
+      <div class="field-grid">
+        <div class="field"><label>النص العربي للختم</label><input data-bind="hero.stampMid" type="text"></div>
+        <div class="field"><label>السنة</label><input data-bind="hero.stampYear" type="text"></div>
+        <div class="field"><label>القيمة</label><input data-bind="hero.stampValue" type="text"></div>
+      </div>
+
+      <h3>الـ Note (الورقة المكتوبة)</h3>
+      <div class="field-grid">
+        <div class="field"><label>العربي</label><input data-bind="hero.note.arabic" type="text"></div>
+        <div class="field"><label>الإنجليزي</label><input data-bind="hero.note.english" type="text"></div>
+        <div class="field"><label>السطر الأخير</label><input data-bind="hero.note.tagline" type="text"></div>
+      </div>
+
+      <h3>صور البولاريد (Polaroids)</h3>
+      <div class="field-grid">
+        <div class="field">
+          <label>Polaroid 1 - Caption</label>
+          <input data-bind="hero.polaroid1.caption" type="text">
+        </div>
+        <div class="field">
+          <label>Polaroid 1 - الصورة</label>
+          <div class="image-uploader" data-bind="hero.polaroid1.cover">
+            <img class="img-preview" src="" alt="">
+            <input type="file" accept="image/*" class="img-file">
+            <input type="text" class="img-path" placeholder="../path/image.png أو data:...">
+          </div>
+        </div>
+        <div class="field">
+          <label>Polaroid 2 - Caption</label>
+          <input data-bind="hero.polaroid2.caption" type="text">
+        </div>
+        <div class="field">
+          <label>Polaroid 2 - الصورة</label>
+          <div class="image-uploader" data-bind="hero.polaroid2.cover">
+            <img class="img-preview" src="" alt="">
+            <input type="file" accept="image/*" class="img-file">
+            <input type="text" class="img-path" placeholder="../path/image.png أو data:...">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WORK TAB ===== -->
+    <section class="tab-panel" data-tab="work">
+      <h2>قسم Work</h2>
+      <div class="field-grid">
+        <div class="field"><label>Eyebrow</label><input data-bind="work.eyebrow" type="text"></div>
+        <div class="field"><label>العنوان العربي</label><input data-bind="work.titleAr" type="text"></div>
+        <div class="field full"><label>العنوان (HTML)</label><textarea data-bind="work.title" rows="2"></textarea></div>
+        <div class="field full"><label>الوصف</label><textarea data-bind="work.description" rows="3"></textarea></div>
+      </div>
+      <h3>الكارت الكبير (يفتح Brands)</h3>
+      <div class="field-grid">
+        <div class="field"><label>Label</label><input data-bind="work.miniCard.label" type="text"></div>
+        <div class="field"><label>Name</label><input data-bind="work.miniCard.name" type="text"></div>
+        <div class="field"><label>Sub</label><input data-bind="work.miniCard.sub" type="text"></div>
+        <div class="field">
+          <label>صورة الغلاف</label>
+          <div class="image-uploader" data-bind="work.miniCard.cover">
+            <img class="img-preview" src="" alt="">
+            <input type="file" accept="image/*" class="img-file">
+            <input type="text" class="img-path" placeholder="../path/image.png">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BRANDS TAB ===== -->
+    <section class="tab-panel" data-tab="brands">
+      <h2>كروت البراندات (تظهر لما تضغط على Brand Identities)</h2>
+      <div class="field-grid">
+        <div class="field"><label>Modal Eyebrow</label><input data-bind="brands.modalEyebrow" type="text"></div>
+        <div class="field full"><label>Modal Title (HTML)</label><input data-bind="brands.modalTitle" type="text"></div>
+      </div>
+      <h3>البراندات</h3>
+      <div class="repeater" id="brandsRepeater" data-bind="brands.items" data-fields='[
+        {"key":"id","label":"ID (لازم يبقى مطابق لمفتاح Projects)","type":"text"},
+        {"key":"featured","label":"مميز؟","type":"checkbox"},
+        {"key":"tag","label":"Tag","type":"text"},
+        {"key":"count","label":"Count (e.g. 25 PAGES)","type":"text"},
+        {"key":"name","label":"الاسم","type":"text"},
+        {"key":"sub","label":"Sub","type":"text"},
+        {"key":"desc","label":"الوصف","type":"textarea"},
+        {"key":"cover","label":"صورة الغلاف","type":"image"}
+      ]'></div>
+    </section>
+
+    <!-- ===== PROJECTS TAB (images) ===== -->
+    <section class="tab-panel" data-tab="projects">
+      <h2>صور المشاريع</h2>
+      <p class="hint">دي الصور اللي بتفتح في الـ Stack Modal لما تضغط على البراند. لازم الـ ID يطابق ID البراند فوق.</p>
+      <div id="projectsManager"></div>
+      <button class="btn-secondary" id="btnAddProject">+ إضافة مشروع جديد</button>
+    </section>
+
+    <!-- ===== ABOUT TAB ===== -->
+    <section class="tab-panel" data-tab="about">
+      <h2>قسم About</h2>
+      <div class="field-grid">
+        <div class="field"><label>Eyebrow</label><input data-bind="about.eyebrow" type="text"></div>
+        <div class="field"><label>العنوان العربي</label><input data-bind="about.titleAr" type="text"></div>
+        <div class="field full"><label>العنوان (HTML)</label><input data-bind="about.title" type="text"></div>
+        <div class="field"><label>اسم الكابشن</label><input data-bind="about.portraitCaption" type="text"></div>
+        <div class="field"><label>المدينة + السنة</label><input data-bind="about.portraitLocation" type="text"></div>
+        <div class="field full">
+          <label>صورة البورتريه</label>
+          <div class="image-uploader" data-bind="about.portraitCover">
+            <img class="img-preview" src="" alt="">
+            <input type="file" accept="image/*" class="img-file">
+            <input type="text" class="img-path" placeholder="../Artboard 1.jpg">
+          </div>
+        </div>
+      </div>
+
+      <h3>النص بالإنجليزي (فقرات منفصلة)</h3>
+      <div class="repeater" data-bind="about.textEn" data-fields='[{"key":"_text","label":"فقرة (HTML)","type":"textarea"}]' data-string-array="true"></div>
+
+      <h3>النص بالعربي (فقرات منفصلة)</h3>
+      <div class="repeater" data-bind="about.textAr" data-fields='[{"key":"_text","label":"فقرة (HTML)","type":"textarea"}]' data-string-array="true"></div>
+
+      <h3>الـ Meta Info</h3>
+      <div class="repeater" data-bind="about.meta" data-fields='[
+        {"key":"label","label":"Label","type":"text"},
+        {"key":"value","label":"Value","type":"text"},
+        {"key":"accent","label":"Accent (لون مميز)؟","type":"checkbox"}
+      ]'></div>
+
+      <h3>المهارات</h3>
+      <div class="repeater" data-bind="about.skills" data-fields='[
+        {"key":"name","label":"اسم المهارة","type":"text"},
+        {"key":"nameAr","label":"بالعربي","type":"text"},
+        {"key":"percent","label":"النسبة","type":"number"}
+      ]'></div>
+    </section>
+
+    <!-- ===== AGENCY TAB ===== -->
+    <section class="tab-panel" data-tab="agency">
+      <h2>قسم Athr Agency</h2>
+      <h3>Chapter Break Labels</h3>
+      <div class="field-grid">
+        <div class="field"><label>الفصل (قبل)</label><input data-bind="chapterBreak.label" type="text"></div>
+        <div class="field"><label>الفصل (الإنجليزي)</label><input data-bind="chapterBreak.sub" type="text"></div>
+        <div class="field"><label>الفصل (بعد)</label><input data-bind="chapterBreak.endLabel" type="text"></div>
+      </div>
+
+      <h3>Agency Header</h3>
+      <div class="field-grid">
+        <div class="field"><label>العلامة العربية</label><input data-bind="agency.arabicMark" type="text"></div>
+        <div class="field"><label>الاسم</label><input data-bind="agency.name" type="text"></div>
+        <div class="field"><label>الـ Accent</label><input data-bind="agency.nameAccent" type="text"></div>
+        <div class="field full"><label>الـ Tagline</label><textarea data-bind="agency.tagline" rows="2"></textarea></div>
+        <div class="field full"><label>السطر العربي تحت</label><input data-bind="agency.arabicTag" type="text"></div>
+        <div class="field"><label>Founder Pill</label><input data-bind="agency.founderPill" type="text"></div>
+        <div class="field"><label>Founder Note</label><input data-bind="agency.founderNote" type="text"></div>
+      </div>
+
+      <h3>الـ Meta Pieces</h3>
+      <div class="repeater" data-bind="agency.metaPieces" data-fields='[{"key":"_text","label":"النص","type":"text"}]' data-string-array="true"></div>
+
+      <h3>الخدمات</h3>
+      <div class="repeater" data-bind="agency.services" data-fields='[
+        {"key":"icon","label":"الأيقونة","type":"text"},
+        {"key":"title","label":"العنوان","type":"text"},
+        {"key":"desc","label":"الوصف","type":"text"}
+      ]'></div>
+    </section>
+
+    <!-- ===== SYSTEM TAB ===== -->
+    <section class="tab-panel" data-tab="system">
+      <h2>قسم System (الباكدجات)</h2>
+      <div class="field-grid">
+        <div class="field"><label>Eyebrow</label><input data-bind="system.eyebrow" type="text"></div>
+        <div class="field"><label>العنوان العربي</label><input data-bind="system.titleAr" type="text"></div>
+        <div class="field full"><label>العنوان (HTML)</label><input data-bind="system.title" type="text"></div>
+        <div class="field full"><label>السلام (Greeting)</label><input data-bind="system.intro.greeting" type="text"></div>
+      </div>
+
+      <h3>سطور المقدمة</h3>
+      <div class="repeater" data-bind="system.intro.lines" data-fields='[{"key":"_text","label":"سطر (HTML)","type":"textarea"}]' data-string-array="true"></div>
+
+      <h3>الباكدجات</h3>
+      <div class="repeater" data-bind="system.packages" data-fields='[
+        {"key":"emoji","label":"الإيموجي","type":"text"},
+        {"key":"variant","label":"الاسم","type":"text"},
+        {"key":"format","label":"الفورمات","type":"text"},
+        {"key":"featured","label":"مميز؟","type":"checkbox"},
+        {"key":"bestValueLabel","label":"شارة الأفضل قيمة","type":"text"},
+        {"key":"priceOld","label":"السعر القديم","type":"text"},
+        {"key":"priceNew","label":"السعر الجديد","type":"text"},
+        {"key":"currency","label":"العملة","type":"text"},
+        {"key":"priceBadge","label":"شارة السعر","type":"text"},
+        {"key":"ctaLabel","label":"نص الزرار","type":"text"},
+        {"key":"ctaHref","label":"رابط الزرار","type":"text"},
+        {"key":"features","label":"المميزات (سطر سطر)","type":"stringArray"}
+      ]'></div>
+
+      <h3>ملاحظات السيستم</h3>
+      <div class="field-grid">
+        <div class="field full"><label>النصيحة (HTML)</label><textarea data-bind="system.note.advice" rows="3"></textarea></div>
+        <div class="field full"><label>CTA Line</label><input data-bind="system.note.cta" type="text"></div>
+        <div class="field full"><label>Brief Line (HTML)</label><textarea data-bind="system.note.brief" rows="2"></textarea></div>
+        <div class="field full"><label>Closing</label><input data-bind="system.note.closing" type="text"></div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT TAB ===== -->
+    <section class="tab-panel" data-tab="contact">
+      <h2>قسم Contact</h2>
+      <div class="field-grid">
+        <div class="field"><label>العنوان العربي</label><input data-bind="contact.arabicTitle" type="text"></div>
+        <div class="field full"><label>العنوان (HTML)</label><input data-bind="contact.title" type="text"></div>
+        <div class="field full"><label>الوصف</label><textarea data-bind="contact.description" rows="2"></textarea></div>
+        <div class="field"><label>WhatsApp Label</label><input data-bind="contact.whatsapp.label" type="text"></div>
+        <div class="field"><label>WhatsApp Number</label><input data-bind="contact.whatsapp.number" type="text"></div>
+        <div class="field full"><label>WhatsApp Link</label><input data-bind="contact.whatsapp.href" type="text"></div>
+        <div class="field"><label>Email</label><input data-bind="contact.email" type="text"></div>
+        <div class="field"><label>LinkedIn URL</label><input data-bind="contact.linkedin" type="text"></div>
+      </div>
+    </section>
+
+    <!-- ===== NAV TAB ===== -->
+    <section class="tab-panel" data-tab="nav">
+      <h2>الـ Nav والفوتر</h2>
+      <div class="field-grid">
+        <div class="field"><label>اللوجو لاتيني</label><input data-bind="nav.logoLatin" type="text"></div>
+        <div class="field"><label>اللوجو عربي</label><input data-bind="nav.logoArabic" type="text"></div>
+        <div class="field"><label>CTA Label</label><input data-bind="nav.cta.label" type="text"></div>
+        <div class="field"><label>CTA Link</label><input data-bind="nav.cta.href" type="text"></div>
+      </div>
+
+      <h3>روابط النافبار</h3>
+      <div class="repeater" data-bind="nav.links" data-fields='[
+        {"key":"label","label":"النص","type":"text"},
+        {"key":"href","label":"الرابط","type":"text"}
+      ]'></div>
+
+      <h3>الفوتر</h3>
+      <div class="field-grid">
+        <div class="field"><label>السنة</label><input data-bind="footer.year" type="text"></div>
+        <div class="field full"><label>الـ Tagline</label><input data-bind="footer.tagline" type="text"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Sticky save bar -->
+  <div class="save-bar">
+    <span id="saveBarMsg">التغييرات بتتحفظ تلقائياً في المتصفح (localStorage). علشان تظهر للزوار، اضغط <strong>تنزيل content.json</strong> وحط الملف في فولدر الموقع.</span>
+    <button class="btn-primary" id="btnSaveNow">حفظ ومعاينة</button>
+  </div>
+</div>
+
+<input type="file" id="importFileInput" accept=".json" style="display:none;">
+
+<script src="admin.js"></script>
+</body>
+</html>

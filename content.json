@@ -1,0 +1,247 @@
+{
+  "version": 1,
+  "lastUpdated": "2026-05-23",
+  "nav": {
+    "logoLatin": "Farsharp",
+    "logoArabic": "فــارس",
+    "links": [
+      { "label": "Work", "href": "#work" },
+      { "label": "About", "href": "#about" },
+      { "label": "Agency", "href": "#agency" },
+      { "label": "System", "href": "#system" },
+      { "label": "Contact", "href": "#contact" }
+    ],
+    "cta": { "label": "WhatsApp →", "href": "https://wa.me/201202490921" }
+  },
+  "hero": {
+    "eyebrow": "Graphic Designer · Cairo",
+    "arabicLine": "كل علامة لها صوت · أصممه بصرياً",
+    "displayWord": "فــارس",
+    "headline": "Brand identity <em>that leaves</em> a lasting mark.",
+    "description": "I'm Farsharp — a graphic designer specializing in visual identity, branding, and motion graphics. I build brand systems with a deep root in Arabic typography and a modern editorial eye.",
+    "ctaPrimary": { "label": "View Selected Work →", "href": "#work" },
+    "ctaSecondary": { "label": "Start a Project", "href": "#contact" },
+    "stats": [
+      { "num": "6+",  "numAr": "٦",  "label": "Brand Identities" },
+      { "num": "1+",  "numAr": "١",  "label": "Years of Experience" },
+      { "num": "25+", "numAr": "٢٥", "label": "Pages of System" },
+      { "num": "1",   "numAr": "١",  "label": "Studio Founded" }
+    ],
+    "stampMid": "صُنــع بحــب",
+    "stampYear": "1950",
+    "stampValue": "20 MILS",
+    "note": {
+      "arabic": "يا أهلاً",
+      "english": "Hi, I'm Farsharp.",
+      "tagline": "– est. 2025 –"
+    },
+    "polaroid1": { "caption": "CR A BRA · ٢٠٢٥", "cover": "../athr agency/cr a bra _Brand Guidelines 01.png" },
+    "polaroid2": { "caption": "TAJDEED · تجديد", "cover": "../تج/تج-01.jpg" }
+  },
+  "work": {
+    "eyebrow": "Selected Work",
+    "titleAr": "المشـــــاريع",
+    "title": "Brands that <em>leave a mark</em>.",
+    "description": "A small, edited selection. Each polaroid opens the full visual system inside.",
+    "miniCard": {
+      "label": "Brand Identities",
+      "name": "Full visual systems",
+      "sub": "CR A BRA · TAJDEED",
+      "cover": "../athr agency/cr a bra _Brand Guidelines 01.png"
+    }
+  },
+  "brands": {
+    "modalEyebrow": "Brand Identities",
+    "modalTitle": "Two brand <em>systems</em>.",
+    "items": [
+      {
+        "id": "crabra",
+        "featured": true,
+        "tag": "Brand Guidelines",
+        "count": "25 PAGES",
+        "name": "CR A BRA",
+        "sub": "Complete brand identity system",
+        "desc": "A creative studio crafting brand identities and visual systems — strategy meets craft to leave a lasting mark.",
+        "cover": "../athr agency/cr a bra _Brand Guidelines 01.png"
+      },
+      {
+        "id": "tajdeed",
+        "featured": false,
+        "tag": "Visual Identity",
+        "count": "6 PAGES",
+        "name": "TAJDEED · تجديد",
+        "sub": "Solar Energy",
+        "desc": "A solar panel company bringing clean, renewable power — sustainable solar solutions to cut electricity bills.",
+        "cover": "../تج/تج-01.jpg"
+      }
+    ]
+  },
+  "projects": {
+    "crabra": {
+      "title": "CR A BRA — Brand Guidelines",
+      "folder": "athr agency",
+      "images": [
+        "cr a bra _Brand Guidelines 01.png",
+        "cr a bra _Brand Guidelines 02.png",
+        "cr a bra _Brand Guidelines 03.png",
+        "cr a bra _Brand Guidelines 04.png",
+        "cr a bra _Brand Guidelines 05.png",
+        "cr a bra _Brand Guidelines 06.png",
+        "cr a bra _Brand Guidelines 07.png",
+        "cr a bra _Brand Guidelines 08.png",
+        "cr a bra _Brand Guidelines 09.png",
+        "cr a bra _Brand Guidelines 10.png",
+        "cr a bra _Brand Guidelines 11.png",
+        "cr a bra _Brand Guidelines 12.png",
+        "cr a bra _Brand Guidelines 13.png",
+        "cr a bra _Brand Guidelines 14.png",
+        "cr a bra _Brand Guidelines 15.png",
+        "cr a bra _Brand Guidelines 16.png",
+        "cr a bra _Brand Guidelines 17.png",
+        "cr a bra _Brand Guidelines 18.png",
+        "cr a bra _Brand Guidelines 19.png",
+        "cr a bra _Brand Guidelines 20.png",
+        "cr a bra _Brand Guidelines 21.png",
+        "cr a bra _Brand Guidelines 22.png",
+        "cr a bra _Brand Guidelines 23.png",
+        "cr a bra _Brand Guidelines 24.png",
+        "cr a bra _Brand Guidelines 25.png",
+        "logo.png",
+        "اخر .png"
+      ]
+    },
+    "tajdeed": {
+      "title": "TAJDEED — تجديد",
+      "folder": "تج",
+      "images": [
+        "تج-01.jpg",
+        "تج-02.jpg",
+        "تج-03.jpg",
+        "تج-05.jpg",
+        "تج-06.jpg"
+      ]
+    }
+  },
+  "about": {
+    "eyebrow": "About",
+    "titleAr": "عــن فــارس",
+    "title": "Design with <em>intent</em>.",
+    "portraitCover": "../Artboard 1.jpg",
+    "portraitCaption": "Farsharp",
+    "portraitLocation": "Tanta · ٢٠٢٥",
+    "textEn": [
+      "I'm <strong>Farsharp</strong> — a graphic designer specializing in <strong>visual identity</strong>, <strong>branding</strong>, and <strong>motion graphics</strong>. I believe great design is more than aesthetics — it's a visual language that says who you are.",
+      "My work focuses on cohesive brand systems that help businesses stand out. From logo and guidelines to social content and motion, I approach every project with a strategic mindset and a love for typography — Arabic and Latin alike.",
+      "I'm also the <strong>Founder of Athr Agency</strong>, an independent creative studio in Egypt — where we help brands leave a lasting mark."
+    ],
+    "textAr": [
+      "أنا <strong>فارس شارب</strong> — مصمم جرافيك متخصص في <strong>الهوية البصرية</strong> و<strong>البراندينج</strong> و<strong>الموشن جرافيك</strong>. مؤمن إن التصميم لغة بصرية، بتعبّر عن مين أنت وإيه اللي بتمثله.",
+      "شغلي بيركّز على سيستمز هوية متكاملة تساعد البيزنس يطلع قدّام ويوصل لجمهوره. من تصميم اللوجو والجايدلاينز للسوشيال والموشن، بتعامل مع كل مشروع بذهنية استراتيجية وحب حقيقي للحروف — عربي ولاتيني.",
+      "أنا كمان <strong>مؤسّس Athr Agency</strong>، استوديو إبداعي مستقل في مصر — بنساعد فيه البراندات تسيب أثر حقيقي."
+    ],
+    "meta": [
+      { "label": "Based in",     "value": "Tanta, Egypt",             "accent": false },
+      { "label": "Role",         "value": "Designer · Founder",       "accent": false },
+      { "label": "Focus",        "value": "Brand Identity · Motion",  "accent": false },
+      { "label": "Availability", "value": "Open to work",             "accent": true  }
+    ],
+    "skills": [
+      { "name": "Brand Identity", "nameAr": "الهوية البصرية", "percent": 90 },
+      { "name": "UX / UI Design", "nameAr": "واجهات",         "percent": 80 },
+      { "name": "2D Motion",      "nameAr": "موشن جرافيك",    "percent": 75 }
+    ]
+  },
+  "chapterBreak": {
+    "label": "فصــل آخـــر",
+    "sub": "A separate venture",
+    "endLabel": "نرجــع للشخصــي"
+  },
+  "agency": {
+    "metaPieces": ["Independent Studio", "Cairo, Egypt", "Est. 2025"],
+    "arabicMark": "أثــر",
+    "name": "Athr",
+    "nameAccent": "Agency",
+    "tagline": "A full-service creative studio — branding, development, and content under one roof.",
+    "arabicTag": "أثر · the mark we leave behind.",
+    "founderPill": "◆ Founded by Farsharp",
+    "founderNote": "A separate brand I built — distinct from my freelance work above.",
+    "services": [
+      { "icon": "◆", "title": "Brand Identity",  "desc": "Logo, guidelines, and complete visual systems." },
+      { "icon": "◉", "title": "Web Development", "desc": "Custom websites and digital experiences." },
+      { "icon": "◎", "title": "Social Media",    "desc": "Page management and content production." },
+      { "icon": "▶", "title": "Video Editing",   "desc": "Motion graphics and professional montage." }
+    ]
+  },
+  "system": {
+    "eyebrow": "Brand Identity System",
+    "titleAr": "سيستــم الهويـــة",
+    "title": "Build your <em>brand</em> — with my system.",
+    "intro": {
+      "greeting": "أهلاً بيك يا فنان 💙",
+      "lines": [
+        "الخطوة دي هي اللي هتنقل براندينج شغلك لمستوى احترافي وتوفر عليك مجهود سنين.",
+        "النظام ده <strong>\"سيستم متكامل\"</strong> لعمل الهوية البصرية، متاح بنسختين حسب احتياجك دلوقتي:"
+      ]
+    },
+    "packages": [
+      {
+        "emoji": "🌀",
+        "variant": "النسخة الـ Reference",
+        "format": "PDF",
+        "featured": false,
+        "features": [
+          "مرجع استراتيجي شامل لكل تفاصيل بناء الهوية.",
+          "مثالية لو عايز تفهم \"الهيكلة العالمية\" بتمشي إزاي.",
+          "هتعلمك تبني Framework قوي ومقنع لأي عميل."
+        ],
+        "priceOld": "٥٠٠ج",
+        "priceNew": "٤١٠",
+        "currency": "ج",
+        "priceBadge": "عرض خاص",
+        "ctaLabel": "اطلب PDF على واتساب",
+        "ctaHref": "https://wa.me/201202490921?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D9%86%D8%B3%D8%AE%D8%A9%20PDF"
+      },
+      {
+        "emoji": "🌀",
+        "variant": "النسخة الـ Pro",
+        "format": "Illustrator + PDF",
+        "featured": true,
+        "bestValueLabel": "أفضل قيمة مقابل سعر",
+        "features": [
+          "بتاخد الملفات \"المفتوحة\" اللي أنا شغال بيها شخصياً.",
+          "جاهزة للتعديل المباشر (ألوان، خطوط، لوجو).",
+          "بتختصر 70% من وقت التصميم والتنفيذ.",
+          "تقدر تسلم بيها شغلك للعملاء فوراً وباحترافية."
+        ],
+        "priceOld": "٣١٠٠ج",
+        "priceNew": "٢٠٠٠",
+        "currency": "ج",
+        "priceBadge": "وفّر ١١٠٠ج",
+        "ctaLabel": "اطلب Pro على واتساب",
+        "ctaHref": "https://wa.me/201202490921?text=%D8%B9%D8%A7%D9%8A%D8%B2%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%A7%D9%84%D9%86%D8%B3%D8%AE%D8%A9%20Pro"
+      }
+    ],
+    "note": {
+      "advice": "<span class=\"lamp\">💡</span> <strong>نصيحتي ليك:</strong> لو لسه بتبني خبرتك الـ PDF ممتاز ليك. لكن لو عندك ضغط شغل وعملاء، الـ Pro هو الاستثمار اللي هيرجع ثمنه من أول بروجكت.",
+      "cta": "حابب تبدأ بـ PDF ولا تنجز وقتك بنسخة الـ Pro؟",
+      "brief": "لو عايز تشوف بريف على الهوية، <a href=\"#work\" class=\"brief-link\">بص المشاريع</a> وخش على مشروع <strong>أثر / CR A BRA</strong>.",
+      "closing": "رد عليا على واتساب عشان أبعتلك تفاصيل التحويل فوراً."
+    }
+  },
+  "contact": {
+    "arabicTitle": "يـلا نشتـغل",
+    "title": "Let's build something <em>that leaves</em> a mark.",
+    "description": "Got a brand to launch or a visual problem to solve? I'd love to hear about it.",
+    "whatsapp": {
+      "label": "WhatsApp",
+      "number": "+20 120 249 0921",
+      "href": "https://wa.me/201202490921"
+    },
+    "email": "Farsharp@gmail.com",
+    "linkedin": "https://www.linkedin.com/in/fars-harp-86291723b/?locale=en"
+  },
+  "footer": {
+    "year": "2026",
+    "tagline": "Founder of Athr Agency · Crafted with care"
+  }
+}
