@@ -217,12 +217,14 @@ footer .fs{font-family:var(--f-serif);font-style:italic;color:var(--black);font-
   </form>
   </div>
 
+  <!-- فخ مضاد للبوتات: مخفي عن البني آدم، البوت بيملاه فبنرفض -->
+  <input type="text" id="hp_website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"
+         style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none">
   <div class="bar">
     <div class="row">
-      <span class="hint">خلّصت؟ ابعت إجاباتك لفارس على واتساب على طول.</span>
+      <span class="hint">خلّصت؟ اضغط «ابعت الفورم» — إجاباتك هتتسجّل عند فارس وهيتفتحلك واتساب تكلّمه.</span>
       <button class="btn ghost" type="button" id="clearBtn">تفريغ</button>
-      <button class="btn ghost" type="button" id="copyBtn">انسخ 📋</button>
-      <button class="btn" type="button" id="waBtn">ابعت على واتساب 🟢</button>
+      <button class="btn" type="button" id="sendBtn">ابعت الفورم ✅</button>
     </div>
   </div>
   <div class="toast" id="toast" role="status" aria-live="polite">اتنسخت ✅</div>
@@ -230,24 +232,52 @@ footer .fs{font-family:var(--f-serif);font-style:italic;color:var(--black);font-
 
 <script>
 (function(){
-  function collect(){
-    var out=['📋 Farsharp — تعريف البراند',''];
+  /* ▼▼▼ إعدادات — بعد ما تعمل Deploy لجوجل شيت، حط اللينك بتاعه هنا مكان الكلام اللي بين علامتين ▼▼▼ */
+  var SHEET_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxNNCsHJRjW_nwfnKmtLcXR_RJ3GWBOLHtHxScrGDZriadrI-QNcz4A3shu1WfhTcDksw/exec';
+  var FORM_TOKEN = 'fs_intake_7Qk93mZ2';   /* نفس الكود ده موجود في سكربت جوجل شيت — لو غيّرته غيّره في الاتنين */
+  var WA_NUMBER = '201202490921';
+  var WA_MESSAGE = 'السلام عليكم 👋 أنا مليت فورم تعريف البراند بتاع فارس، تحت أمرك ✅';
+  /* ▲▲▲ */
+
+  function collectPairs(){
+    var pairs=[];
     document.querySelectorAll('#intake fieldset').forEach(function(fs){
-      out.push('■ '+fs.querySelector('.leg .t').textContent.trim());
       fs.querySelectorAll('.field').forEach(function(f){
         var qEl=f.querySelector('.q');var q=qEl?qEl.textContent.replace(/\s+/g,' ').trim():'';
+        if(!q)return;
         var a='';var ctrl=f.querySelector('textarea,input[type=text],input[type=email],input[type=tel],select');
         if(ctrl)a=(ctrl.value||'').trim();
         var ck=[].slice.call(f.querySelectorAll('input[type=radio]:checked,input[type=checkbox]:checked')).map(function(c){return c.closest('.opt').textContent.trim();});
         if(ck.length)a=ck.join('، ');
-        out.push('• '+q+': '+(a||'—'));
-      });out.push('');
-    });return out.join('\n');
+        pairs.push([q,a]);
+      });
+    });
+    return pairs;
   }
-  function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},1900);}
-  function fallback(text){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('اتنسخت ✅');}catch(e){toast('انسخ يدوي');}document.body.removeChild(ta);}
-  document.getElementById('copyBtn').addEventListener('click',function(){var t=collect();if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast('اتنسخت ✅ الصقها في واتساب');},function(){fallback(t);});}else fallback(t);});
-  document.getElementById('waBtn').addEventListener('click',function(){var t=collect();var url='https://wa.me/201202490921?text='+encodeURIComponent(t);window.open(url,'_blank');});
+  function anyFilled(pairs){return pairs.some(function(p){return p[1]&&p[1].length;});}
+  function toast(m){var t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(function(){t.classList.remove('show');},2200);}
+
+  function openWhatsApp(){window.location.href='https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(WA_MESSAGE);}
+
+  document.getElementById('sendBtn').addEventListener('click',function(){
+    var pairs=collectPairs();
+    if(!anyFilled(pairs)){toast('املا الفورم الأول 🙏');return;}
+    // فخ البوتات: لو الحقل المخفي اتملى، ده بوت — نتظاهر بالنجاح ومنبعتش حاجة
+    var hp=document.getElementById('hp_website');
+    if(hp&&hp.value){toast('تمام ✅');setTimeout(openWhatsApp,700);return;}
+    var body=JSON.stringify({token:FORM_TOKEN,ts:new Date().toISOString(),answers:pairs});
+    var configured=SHEET_ENDPOINT.indexOf('http')===0;
+    if(configured){
+      try{
+        var blob=new Blob([body],{type:'text/plain;charset=utf-8'});
+        if(navigator.sendBeacon){navigator.sendBeacon(SHEET_ENDPOINT,blob);}
+        else{fetch(SHEET_ENDPOINT,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:body});}
+      }catch(e){}
+    }
+    toast('اتسجّلت ✅ بنفتحلك واتساب...');
+    setTimeout(openWhatsApp,700);
+  });
+
   document.getElementById('clearBtn').addEventListener('click',function(){if(!confirm('تفرّغ كل الإجابات؟'))return;document.querySelectorAll('#intake input,#intake textarea,#intake select').forEach(function(el){if(el.type==='radio'||el.type==='checkbox')el.checked=false;else el.value='';});toast('اتفرّغت');});
 })();
 </script>
