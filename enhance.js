@@ -33,17 +33,20 @@
     if (dot && ring) {
       document.documentElement.classList.add('has-cursor');
       var mx = window.innerWidth / 2, my = window.innerHeight / 2;
-      var rx = mx, ry = my, shown = false;
+      var rx = mx, ry = my, shown = false, ringRunning = false;
+      function ringLoop() {
+        rx = lerp(rx, mx, 0.2); ry = lerp(ry, my, 0.2);
+        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+        if (Math.abs(rx - mx) > 0.3 || Math.abs(ry - my) > 0.3) requestAnimationFrame(ringLoop);
+        else ringRunning = false;
+      }
+      function startRing() { if (!ringRunning) { ringRunning = true; requestAnimationFrame(ringLoop); } }
       window.addEventListener('mousemove', function (e) {
         mx = e.clientX; my = e.clientY;
         if (!shown) { shown = true; dot.classList.add('on'); ring.classList.add('on'); }
         dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+        startRing();
       });
-      (function raf() {
-        rx = lerp(rx, mx, 0.18); ry = lerp(ry, my, 0.18);
-        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-        requestAnimationFrame(raf);
-      })();
       var hot = 'a,button,.mini-card,.brand-card,.service,.system-card,.lang-toggle,.hero-polaroid,.collage-vinyl,input,textarea,select,label';
       document.addEventListener('mouseover', function (e) {
         if (e.target.closest(hot)) ring.classList.add('hot');
@@ -135,33 +138,35 @@
     skillFills.forEach(function (el) { el.style.width = el.dataset.w; });
   }
 
-  /* ---- Parallax (mouse + scroll), uses CSS `translate` --------- */
-  if (!reduce) {
+  /* ---- Parallax (desktop only, idle-aware), uses CSS `translate` */
+  if (!reduce && finePointer && window.innerWidth >= 900) {
     var topo = document.querySelector('.bg-topo');
     var layers = [
-      { el: document.querySelector('.blot-1'), f: 26 },
-      { el: document.querySelector('.blot-2'), f: -32 },
-      { el: document.querySelector('.collage-photo-1'), f: 18 },
-      { el: document.querySelector('.collage-photo-2'), f: -22 },
-      { el: document.querySelector('.collage-stamp'), f: 30 },
-      { el: document.querySelector('.collage-vinyl'), f: -26 },
-      { el: document.querySelector('.collage-fern'), f: 14 },
-      { el: document.querySelector('.collage-crossword'), f: 22 }
+      { el: document.querySelector('.blot-1'), f: 22 },
+      { el: document.querySelector('.blot-2'), f: -26 },
+      { el: document.querySelector('.collage-photo-1'), f: 16 },
+      { el: document.querySelector('.collage-photo-2'), f: -18 },
+      { el: document.querySelector('.collage-stamp'), f: 24 },
+      { el: document.querySelector('.collage-vinyl'), f: -20 },
+      { el: document.querySelector('.collage-fern'), f: 12 },
+      { el: document.querySelector('.collage-crossword'), f: 18 }
     ].filter(function (l) { return l.el; });
-    var pmx = 0, pmy = 0, tmx = 0, tmy = 0, sY = 0;
+    var pmx = 0, pmy = 0, tmx = 0, tmy = 0, sY = window.pageYOffset, lastSY = sY, paraRunning = false;
+    function paraLoop() {
+      pmx = lerp(pmx, tmx, 0.07); pmy = lerp(pmy, tmy, 0.07);
+      if (topo) topo.style.translate = (pmx * 20).toFixed(1) + 'px ' + (pmy * 20 + sY * 0.1).toFixed(1) + 'px';
+      for (var i = 0; i < layers.length; i++) {
+        layers[i].el.style.translate = (pmx * layers[i].f).toFixed(1) + 'px ' + (pmy * layers[i].f).toFixed(1) + 'px';
+      }
+      var settled = Math.abs(pmx - tmx) < 0.002 && Math.abs(pmy - tmy) < 0.002 && sY === lastSY;
+      lastSY = sY;
+      if (settled) paraRunning = false; else requestAnimationFrame(paraLoop);
+    }
+    function startPara() { if (!paraRunning) { paraRunning = true; requestAnimationFrame(paraLoop); } }
     window.addEventListener('mousemove', function (e) {
-      tmx = (e.clientX / window.innerWidth - 0.5);
-      tmy = (e.clientY / window.innerHeight - 0.5);
+      tmx = (e.clientX / window.innerWidth - 0.5); tmy = (e.clientY / window.innerHeight - 0.5); startPara();
     }, { passive: true });
-    window.addEventListener('scroll', function () { sY = window.pageYOffset; }, { passive: true });
-    (function paraLoop() {
-      pmx = lerp(pmx, tmx, 0.06); pmy = lerp(pmy, tmy, 0.06);
-      if (topo) topo.style.translate = (pmx * 22).toFixed(1) + 'px ' + (pmy * 22 + sY * 0.12).toFixed(1) + 'px';
-      layers.forEach(function (l) {
-        l.el.style.translate = (pmx * l.f).toFixed(1) + 'px ' + (pmy * l.f).toFixed(1) + 'px';
-      });
-      requestAnimationFrame(paraLoop);
-    })();
+    window.addEventListener('scroll', function () { sY = window.pageYOffset; startPara(); }, { passive: true });
   }
 
   /* ---- Magnetic buttons (uses CSS `translate`) ----------------- */
